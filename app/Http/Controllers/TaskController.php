@@ -24,9 +24,13 @@ class TaskController extends Controller
         if (is_numeric($angka1) && is_numeric($angka2)) {
             $hasil = $angka1 + $angka2;
 
-            return "Hasil penjumlahan: $hasil";
+            return view('view', [
+                'angka1' => $angka1,
+                'angka2' => $angka2,
+                'hasil' => $hasil,
+            ]);
         }
 
-        return 'Pastikan angka1 dan angka2 adalah angka.';
+        return view('view');
     }
 }
