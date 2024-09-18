@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 Route::get('/hello', [TaskController::class, 'hello']);
 Route::get('/perkalian/{angka}', [TaskController::class, 'perkalian']);
-Route::get('/tambah', [TaskController::class, 'tambah']);
+Route::get('/tambahMobil', [TaskController::class, 'insertCar']);
+Route::get('/mobil', [TaskController::class, 'showCarWhereHarga20000']);
