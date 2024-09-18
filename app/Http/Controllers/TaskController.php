@@ -18,19 +18,15 @@ class TaskController extends Controller
 
     public function tambah(Request $request)
     {
-        $angka1 = $request->query('angka1');
-        $angka2 = $request->query('angka2');
+        $validated = $request->validate([
+            'angka1' => 'required|numeric',
+            'angka2' => 'required|numeric',
+        ]);
 
-        if (is_numeric($angka1) && is_numeric($angka2)) {
-            $hasil = $angka1 + $angka2;
+        $angka1 = $request->input('angka1');
+        $angka2 = $request->input('angka2');
+        $hasil = $angka1 + $angka2;
 
-            return view('view', [
-                'angka1' => $angka1,
-                'angka2' => $angka2,
-                'hasil' => $hasil,
-            ]);
-        }
-
-        return view('view');
+        return view('view', compact('hasil'));
     }
 }
