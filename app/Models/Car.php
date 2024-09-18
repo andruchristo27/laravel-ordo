@@ -13,10 +13,16 @@ class Car extends Model
         'jenis',
         'harga',
         'tanggal_pembuatan',
+        'manufacturer_id',
     ];
 
     public function manufacturer()
     {
         return $this->belongsTo(Manufacturer::class, 'manufacturer_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'car_id');
     }
 }
