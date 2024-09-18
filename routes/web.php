@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 Route::get('/hello', [TaskController::class, 'hello']);
 Route::get('/perkalian/{angka}', [TaskController::class, 'perkalian']);
+Route::get('/tambah', [TaskController::class, 'tambah']);
