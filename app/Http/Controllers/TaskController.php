@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,18 +37,37 @@ class TaskController extends Controller
         DB::table('cars')->insert([
             'nama' => 'Toyota Corolla',
             'jenis' => 'Sedan',
-            'harga' => 20000.00,
+            'harga' => 380000000.00,
             'tanggal_pembuatan' => '2024-09-01',
         ]);
 
         return 'Data berhasil disimpan.';
     }
 
-    public function showCarWhereHarga20000()
+    public function showCarWhereHarga380000000()
     {
         $mobil = DB::table('cars')
-            ->where('harga', '=', 20000)
+            ->where('harga', '=', 380000000)
             ->get();
+
+        return $mobil;
+    }
+
+    public function insertCarEloquent()
+    {
+        Car::create([
+            'nama' => 'Toyota Alphard',
+            'jenis' => 'MPV',
+            'harga' => 800000000.00,
+            'tanggal_pembuatan' => '2020-08-01',
+        ]);
+
+        return 'Data berhasil disimpan.';
+    }
+
+    public function showCarWhereHarga800000000()
+    {
+        $mobil = Car::where('harga', '=', 800000000)->get();
 
         return $mobil;
     }
