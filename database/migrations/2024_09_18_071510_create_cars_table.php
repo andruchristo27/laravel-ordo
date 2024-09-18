@@ -18,6 +18,11 @@ return new class extends Migration
             $table->decimal('harga', 15, 2);
             $table->date('tanggal_pembuatan');
             $table->timestamps();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
+            $table->foreign('manufacturer_id')
+                ->references('id')
+                ->on('manufacturers')
+                ->onDelete('set null');
         });
     }
 
@@ -26,6 +31,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cars');
+        Schema::table('cars', function (Blueprint $table) {
+            $table->dropForeign(['manufacturer_id']);
+            $table->dropColumn('manufacturer_id');
+        });
     }
 };

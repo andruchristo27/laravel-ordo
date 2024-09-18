@@ -14,4 +14,9 @@ class Car extends Model
         'harga',
         'tanggal_pembuatan',
     ];
+
+    public function manufacturer()
+    {
+        return $this->belongsTo(Manufacturer::class, 'manufacturer_id');
+    }
 }
