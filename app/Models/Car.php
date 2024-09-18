@@ -25,4 +25,9 @@ class Car extends Model
     {
         return $this->hasMany(Review::class, 'car_id');
     }
+
+    public function features()
+    {
+        return $this->belongsToMany(Feature::class, 'car_feature', 'car_id', 'feature_id');
+    }
 }
